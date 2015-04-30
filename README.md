@@ -18,6 +18,30 @@ Notice the [docker-1.4.1-dev-volumes-dogged](https://github.com/clintonskitson/d
 
 This is purely a proto-type as the Volume functionality is not currently in 1.6.  Now that we have a working prototype, we are hoping for broader feedback to help steer the Container Data Volume discussions.
 
+### Commands
+
+      docker volume ls - List volumes that have been created in Docker
+      docker volume inspect - Inspect a specific volume
+      docker volume create - Create a Container Data Volume
+      docker volume rm - Remove a Container Data Volume
+      docker volume snapshot ls
+      docker volume snapshot create - Create a snapshot of a Container Data Volume
+      docker volume snapshot rm - Remove a snapshot of a Container Data Volume
+      docker volume snapshot cp - Copy a snapshot between regions
+
+### Run it!
+
+You can download the experimental Docker binary from the releases.  Load this up on a CentOS7 release (this is what we developed against, but it should work against others).
+
+#### EC2 Example
+
+      export AWS_ACCESS_KEY=access_key AWS_SECRET_KEY="secret_key"
+      export REXRAY_STORAGEDRIVERS=ec2 (optional, but used now)
+      docker-1.4.1-dev -dD --storage-driver=devicemapper
+      docker volume create --name=datavol --size=50 --volumetype=io1 --iops=1000
+      docker run -ti -v datavol:/data --name=persistent ubuntu
+
+
 ## Sub-Modules
 We are leveraging sub-modules here to bring the gather the work from other repos centrally.
 
