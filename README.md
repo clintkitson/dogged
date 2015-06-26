@@ -6,9 +6,15 @@
 
 By using ```REX-Ray``` we greatly simplify how storage is managed and expose storage services at the most granular level which can enable Container and Persistence use cases further.
 
+## Docker 1.7+
+In future releases we are working on ensuring that Volume Drivers can use a remote API endpoint.  This involves abstracting the current Volume Driver implementation.  See the [PR](https://github.com/docker/docker/pull/13924) where this work is highlighted.
 
-## Docker
-The first Container Engine or Runtime that we have targeted for embedding storage abstraction is [Docker](http://docker.com).  Here we continued work on an existing branch that brought "Container Volumes" as proper entities into the Docker object model.  We further enhanced this a bit and added direct calls to Dogged for Volume related functionality.
+## Docker 1.7
+This release brought to the table Volume Drivers. See the [post](http://blog.emccode.com/2015/06/22/volume-drivers-arrive-at-dockcon/) speaking about the project REX-Ray and it's native support for this feature.  
+
+
+## Docker 1.4.1
+Here we continued work on an existing branch that brought "Container Volumes" as proper entities into the Docker object model.  We further enhanced this a bit and added direct calls to Dogged for Volume related functionality.
 
 This allows you to issue commands like ```docker volume create``` or ```docker volume snapshot``` which creates actual volumes on underlying storage or virtualization platforms and removes then
 
